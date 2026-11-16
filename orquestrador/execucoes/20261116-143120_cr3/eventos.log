@@ -1,0 +1,24 @@
+2026-11-16 14:31:21,093 INFO Sequência 'Sequência de referência — Dobot CR3': 3 ciclo(s), 2 passo(s), timeout 60 s por ciclo
+2026-11-16 14:31:21,093 INFO AAS DobotCR3 em opc.tcp://127.0.0.1:4886
+2026-11-16 14:31:21,094 INFO Estado inicial na AAS: Idle
+2026-11-16 14:31:21,148 DEBUG Ciclo 1/3: pick [200, 150, 100] -> place [-200, 150, 100]
+2026-11-16 14:31:21,193 DEBUG     estado: Start                              (+0.05 s)
+2026-11-16 14:31:21,643 DEBUG     estado: Executing                          (+0.50 s)
+2026-11-16 14:31:24,992 DEBUG     estado: Idle                               (+3.84 s)
+2026-11-16 14:31:24,992 INFO Ciclo  1/3 · pick (200, 150, 100) -> place (-200, 150, 100) · Start -> Executing -> Idle ·  3.84 s · OK
+2026-11-16 14:31:25,043 DEBUG Ciclo 2/3: pick [-200, 150, 100] -> place [200, 150, 100]
+2026-11-16 14:31:25,092 DEBUG     estado: Start                              (+0.05 s)
+2026-11-16 14:31:25,142 DEBUG     estado: Executing                          (+0.09 s)
+2026-11-16 14:31:26,742 DEBUG     estado: Stop                               (+1.70 s)
+2026-11-16 14:31:27,143 DEBUG     estado: Stopped                            (+2.11 s)
+2026-11-16 14:31:27,144 INFO Ciclo  2/3 · pick (-200, 150, 100) -> place (200, 150, 100) · Start -> Executing -> Stop -> Stopped ·  2.11 s · PARADO
+2026-11-16 14:31:27,144 INFO Calibrate: levando o robô à home...
+2026-11-16 14:31:27,192 DEBUG     estado: Calibrate                          (+0.05 s)
+2026-11-16 14:31:27,642 DEBUG     estado: Executing                          (+0.50 s)
+2026-11-16 14:31:28,743 DEBUG     estado: Idle                               (+1.59 s)
+2026-11-16 14:31:28,744 INFO Calibrate -> Idle
+2026-11-16 14:31:28,795 DEBUG Ciclo 3/3: pick [200, 150, 100] -> place [-200, 150, 100]
+2026-11-16 14:31:28,843 DEBUG     estado: Start                              (+0.05 s)
+2026-11-16 14:31:29,142 DEBUG     estado: Executing                          (+0.34 s)
+2026-11-16 14:31:32,493 DEBUG     estado: Idle                               (+3.70 s)
+2026-11-16 14:31:32,493 INFO Ciclo  3/3 · pick (200, 150, 100) -> place (-200, 150, 100) · Start -> Executing -> Idle ·  3.70 s · OK

@@ -1,0 +1,16 @@
+services:
+  mqtt_client:
+    build: .
+    restart: always
+    privileged: true
+    devices:
+      - /dev:/dev
+    environment:
+      - MQTT_BROKER=131.255.82.115
+      - MQTT_PORT=1883
+      - MQTT_TOPIC_COMMAND=spacexlab/AAS/AAS_ID/command
+      - MQTT_TOPIC_FEEDBACK=spacexlab/AAS/AAS_ID/state
+      - BAUD_RATE=1000000
+    volumes:
+      - ./logs:/app/logs
+      - ./:/app

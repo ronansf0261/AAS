@@ -1,0 +1,21 @@
+﻿ciclo;passo;pick_x;pick_y;pick_z;place_x;place_y;place_z;inicio;duracao_s;estados;estado_final;resultado
+1;1;200;150;100;-200;150;100;2026-11-16T14:29:51;3.53;Start -> Executing -> Idle;Idle;OK
+2;2;-200;150;100;200;150;100;2026-11-16T14:29:55;3.45;Start -> Executing -> Idle;Idle;OK
+3;1;200;150;100;-200;150;100;2026-11-16T14:29:59;3.44;Start -> Executing -> Idle;Idle;OK
+4;2;-200;150;100;200;150;100;2026-11-16T14:30:02;3.44;Start -> Executing -> Idle;Idle;OK
+5;1;200;150;100;-200;150;100;2026-11-16T14:30:06;3.44;Start -> Executing -> Idle;Idle;OK
+6;2;-200;150;100;200;150;100;2026-11-16T14:30:09;3.44;Start -> Executing -> Idle;Idle;OK
+7;1;200;150;100;-200;150;100;2026-11-16T14:30:13;3.44;Start -> Executing -> Idle;Idle;OK
+8;2;-200;150;100;200;150;100;2026-11-16T14:30:16;3.44;Start -> Executing -> Idle;Idle;OK
+9;1;200;150;100;-200;150;100;2026-11-16T14:30:20;3.44;Start -> Executing -> Idle;Idle;OK
+10;2;-200;150;100;200;150;100;2026-11-16T14:30:23;3.44;Start -> Executing -> Idle;Idle;OK
+11;1;200;150;100;-200;150;100;2026-11-16T14:30:27;3.44;Start -> Executing -> Idle;Idle;OK
+12;2;-200;150;100;200;150;100;2026-11-16T14:30:30;3.44;Start -> Executing -> Idle;Idle;OK
+13;1;200;150;100;-200;150;100;2026-11-16T14:30:34;3.44;Start -> Executing -> Idle;Idle;OK
+14;2;-200;150;100;200;150;100;2026-11-16T14:30:37;3.44;Start -> Executing -> Idle;Idle;OK
+15;1;200;150;100;-200;150;100;2026-11-16T14:30:41;3.44;Start -> Executing -> Idle;Idle;OK
+16;2;-200;150;100;200;150;100;2026-11-16T14:30:44;3.44;Start -> Executing -> Idle;Idle;OK
+17;1;200;150;100;-200;150;100;2026-11-16T14:30:48;3.44;Start -> Executing -> Idle;Idle;OK
+18;2;-200;150;100;200;150;100;2026-11-16T14:30:51;3.44;Start -> Executing -> Idle;Idle;OK
+19;1;200;150;100;-200;150;100;2026-11-16T14:30:55;3.44;Start -> Executing -> Idle;Idle;OK
+20;2;-200;150;100;200;150;100;2026-11-16T14:30:58;3.44;Start -> Executing -> Idle;Idle;OK

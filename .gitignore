@@ -1,0 +1,27 @@
+# Repositório do Projeto Hermes (C:\AAS). As pastas educational-robot-aas, raspberrypi-integration,
+# educational-robot-arduino-firmware, instance-aas e integration-layer continuam sendo também
+# repositórios do GitLab do laboratório; aqui os arquivos delas entram como arquivos comuns.
+
+# Ambientes Python e caches
+.venv/
+.venv-robo-b/
+__pycache__/
+*.pyc
+
+# Gerados em execução
+mongo/
+logs/
+.env
+
+# Arquivos temporários do Office
+~$*
+
+# Credenciais em texto puro: ficam só nesta máquina (o repositório no GitHub é público)
+# senha do banco do laboratório
+educational-robot-aas/docker-compose.yaml
+# senha do Wi-Fi do laboratório
+educational-robot-arduino-firmware/RobotArm_V3/SensorMQTT/Sensor_Flowracks.ino
+# senha SSH da Raspberry Pi
+raspberrypi-integration/README.md
+# link aberto ("qualquer pessoa com o link") da pasta do Drive que tem cópias desses arquivos
+Hermes/HISTORICO.md

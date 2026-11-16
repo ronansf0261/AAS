@@ -1,0 +1,2 @@
+﻿ciclo;passo;pick_x;pick_y;pick_z;place_x;place_y;place_z;inicio;duracao_s;estados;estado_final;resultado
+1;1;200;150;100;-200;150;100;2026-11-16T14:33:21;1.84;Start -> Executing -> Error: Modbus Communication Failed;Error: Modbus Communication Failed;ERRO

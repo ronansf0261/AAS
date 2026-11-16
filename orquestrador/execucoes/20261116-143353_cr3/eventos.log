@@ -1,0 +1,10 @@
+2026-11-16 14:33:54,531 INFO Sequência 'Sequência de referência — Dobot CR3': 1 ciclo(s), 2 passo(s), timeout 60 s por ciclo
+2026-11-16 14:33:54,531 INFO AAS DobotCR3 em opc.tcp://127.0.0.1:4886
+2026-11-16 14:33:54,532 INFO Estado inicial na AAS: Idle
+2026-11-16 14:33:54,588 DEBUG Ciclo 1/1: pick [200, 150, 100] -> place [-200, 150, 100]
+2026-11-16 14:33:54,632 DEBUG     estado: Start                              (+0.05 s)
+2026-11-16 14:33:54,632 DEBUG     estado: Executing                          (+0.05 s)
+2026-11-16 14:33:56,381 DEBUG     estado: Calibrate                          (+1.80 s)
+2026-11-16 14:33:56,630 DEBUG     estado: Executing                          (+2.05 s)
+2026-11-16 14:33:57,980 DEBUG     estado: Idle                               (+3.39 s)
+2026-11-16 14:33:57,981 INFO Ciclo  1/1 · pick (200, 150, 100) -> place (-200, 150, 100) · Start -> Executing -> Calibrate -> Executing -> Idle ·  3.39 s · OK

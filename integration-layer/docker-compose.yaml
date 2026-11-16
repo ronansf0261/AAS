@@ -1,0 +1,26 @@
+# docker-compose.yaml
+services:
+  pick_and_place_robot_1:
+    build: .
+    container_name: pick_and_place_robot_1
+    hostname: pick_and_place_robot_1
+    volumes:
+      - ./resources:/app/resources
+      - ./src:/app/src
+    working_dir: /app
+    ports:
+      - "4893:4840" # Mapeia a porta OPC UA do container para a porta 4893 do host
+    restart: always
+    environment:
+      # Endereço do simulador do robô Modbus. 'host.docker.internal' permite que o container acesse serviços no host.
+      MODBUS_HOST: "192.168.0.192"
+      MODBUS_PORT: "502" # Porta para o simulador Modbus
+    command: >
+      -f DobotCR3_1.aasx.xml
+      --identification 62a88e68bae63a448474f178
+      --id 6565_0021_3052_0001
+      --id_short DobotCR3
+    
+
+
+

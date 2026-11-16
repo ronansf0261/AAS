@@ -1,0 +1,13 @@
+2026-11-16 14:33:21,635 INFO Sequência 'Sequência de referência — Dobot CR3': 2 ciclo(s), 2 passo(s), timeout 60 s por ciclo
+2026-11-16 14:33:21,635 INFO AAS DobotCR3 em opc.tcp://127.0.0.1:4886
+2026-11-16 14:33:21,636 INFO Estado inicial na AAS: Idle
+2026-11-16 14:33:21,690 DEBUG Ciclo 1/2: pick [200, 150, 100] -> place [-200, 150, 100]
+2026-11-16 14:33:21,736 DEBUG     estado: Start                              (+0.03 s)
+2026-11-16 14:33:22,136 DEBUG     estado: Executing                          (+0.44 s)
+2026-11-16 14:33:23,535 DEBUG     estado: Error: Modbus Communication Failed (+1.84 s)
+2026-11-16 14:33:23,535 INFO Ciclo  1/2 · pick (200, 150, 100) -> place (-200, 150, 100) · Start -> Executing -> Error: Modbus Communication Failed ·  1.84 s · ERRO
+2026-11-16 14:33:23,536 INFO Calibrate: levando o robô à home...
+2026-11-16 14:33:23,584 DEBUG     estado: Calibrate                          (+0.00 s)
+2026-11-16 14:33:26,635 DEBUG     estado: Error: Modbus Not Connected        (+3.05 s)
+2026-11-16 14:33:26,635 INFO Calibrate -> Error: Modbus Not Connected
+2026-11-16 14:33:26,635 ERROR Execução encerrada: a recuperação com Calibrate falhou

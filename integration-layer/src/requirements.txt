@@ -1,0 +1,9 @@
+
+pydantic==2.5.3
+aiohttp==3.8.6
+uvloop
+asyncua
+uuid
+asyncio
+pymodbus==3.8.6
+aiomqtt==2.5.1

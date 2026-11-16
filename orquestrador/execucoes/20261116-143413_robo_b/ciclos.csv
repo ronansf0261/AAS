@@ -1,0 +1,4 @@
+﻿ciclo;passo;pick_x;pick_y;pick_z;place_x;place_y;place_z;inicio;duracao_s;estados;estado_final;resultado
+1;1;140;120;-62;-140;120;-62;2026-11-16T14:34:14;22.98;Start -> Idle;Idle;OK
+2;2;-140;120;-62;140;120;-62;2026-11-16T14:34:37;22.78;Start -> Idle;Idle;OK
+3;1;140;120;-62;-140;120;-62;2026-11-16T14:35:00;23.09;Start -> Idle;Idle;OK

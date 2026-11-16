@@ -1,0 +1,3 @@
+# A imagem só precisa do requirements.txt; o código entra por volume.
+*
+!requirements.txt

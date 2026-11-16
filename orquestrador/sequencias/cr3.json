@@ -1,0 +1,12 @@
+{
+  "nome": "Sequência de referência — Dobot CR3",
+  "aas_url": "opc.tcp://127.0.0.1:4886",
+  "referencial": "robô (provisório: a conversão para o referencial da célula é a Fase 4.2)",
+  "ciclos": 20,
+  "timeout_ciclo_s": 60,
+  "meta_sucesso": 0.95,
+  "passos": [
+    {"pick": [200, 150, 100], "place": [-200, 150, 100]},
+    {"pick": [-200, 150, 100], "place": [200, 150, 100]}
+  ]
+}

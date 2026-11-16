@@ -1,0 +1,83 @@
+{
+  "sequencia": "Sequência de referência — Dobot CR3",
+  "arquivo": "sequencias/cr3.json",
+  "aas": {
+    "nome": "DobotCR3",
+    "url": "opc.tcp://127.0.0.1:4886"
+  },
+  "inicio": "2026-11-16T14:31:20",
+  "fim": "2026-11-16T14:31:32",
+  "ciclos_planejados": 3,
+  "ciclos_executados": 3,
+  "ciclos_ok": 2,
+  "resultados": {
+    "OK": 2,
+    "PARADO": 1
+  },
+  "taxa_sucesso": 0.6667,
+  "meta_sucesso": 0.95,
+  "aprovado_taxa_sucesso": false,
+  "observabilidade_estado": 1.0,
+  "aprovado_observabilidade": true,
+  "duracao_ciclo_ok_s": {
+    "media": 3.77,
+    "min": 3.7,
+    "max": 3.84,
+    "desvio": 0.07
+  },
+  "recuperacoes_com_calibrate": 1,
+  "interrompida": null,
+  "versoes": {
+    "integration-layer": {
+      "commit": "de6fa1f",
+      "arquivos_nao_commitados": 11
+    },
+    "educational-robot-aas": {
+      "commit": "ad2bd28",
+      "arquivos_nao_commitados": 1
+    },
+    "raspberrypi-integration": {
+      "commit": "8856c4f",
+      "arquivos_nao_commitados": 2
+    },
+    "instance-aas": {
+      "commit": "afef34f",
+      "arquivos_nao_commitados": 0
+    },
+    "servidor-local": {
+      "commit": null,
+      "observacao": "não versionado"
+    },
+    "orquestrador": {
+      "commit": null,
+      "observacao": "não versionado"
+    }
+  },
+  "referencial": "robô (provisório: a conversão para o referencial da célula é a Fase 4.2)",
+  "passos": [
+    {
+      "pick": [
+        200,
+        150,
+        100
+      ],
+      "place": [
+        -200,
+        150,
+        100
+      ]
+    },
+    {
+      "pick": [
+        -200,
+        150,
+        100
+      ],
+      "place": [
+        200,
+        150,
+        100
+      ]
+    }
+  ]
+}

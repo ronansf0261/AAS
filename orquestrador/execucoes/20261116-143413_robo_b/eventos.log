@@ -1,0 +1,15 @@
+2026-11-16 14:34:14,566 INFO Sequência 'Sequência de referência — Robô Educacional': 3 ciclo(s), 2 passo(s), timeout 120 s por ciclo
+2026-11-16 14:34:14,566 INFO AAS EducationalRobotAAS em opc.tcp://127.0.0.1:4885
+2026-11-16 14:34:14,567 INFO Estado inicial na AAS: Idle
+2026-11-16 14:34:14,631 DEBUG Ciclo 1/3: pick [140, 120, -62] -> place [-140, 120, -62]
+2026-11-16 14:34:14,665 DEBUG     estado: Start                              (+0.03 s)
+2026-11-16 14:34:37,614 DEBUG     estado: Idle                               (+22.98 s)
+2026-11-16 14:34:37,614 INFO Ciclo  1/3 · pick (140, 120, -62) -> place (-140, 120, -62) · Start -> Idle · 22.98 s · OK
+2026-11-16 14:34:37,673 DEBUG Ciclo 2/3: pick [-140, 120, -62] -> place [140, 120, -62]
+2026-11-16 14:34:37,714 DEBUG     estado: Start                              (+0.03 s)
+2026-11-16 14:35:00,463 DEBUG     estado: Idle                               (+22.78 s)
+2026-11-16 14:35:00,463 INFO Ciclo  2/3 · pick (-140, 120, -62) -> place (140, 120, -62) · Start -> Idle · 22.78 s · OK
+2026-11-16 14:35:00,519 DEBUG Ciclo 3/3: pick [140, 120, -62] -> place [-140, 120, -62]
+2026-11-16 14:35:00,563 DEBUG     estado: Start                              (+0.03 s)
+2026-11-16 14:35:23,611 DEBUG     estado: Idle                               (+23.09 s)
+2026-11-16 14:35:23,611 INFO Ciclo  3/3 · pick (140, 120, -62) -> place (-140, 120, -62) · Start -> Idle · 23.09 s · OK

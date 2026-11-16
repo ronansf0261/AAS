@@ -1,0 +1,4 @@
+﻿ciclo;passo;pick_x;pick_y;pick_z;place_x;place_y;place_z;inicio;duracao_s;estados;estado_final;resultado
+1;1;200;150;100;-200;150;100;2026-11-16T14:31:21;3.84;Start -> Executing -> Idle;Idle;OK
+2;2;-200;150;100;200;150;100;2026-11-16T14:31:25;2.11;Start -> Executing -> Stop -> Stopped;Stopped;PARADO
+3;1;200;150;100;-200;150;100;2026-11-16T14:31:28;3.7;Start -> Executing -> Idle;Idle;OK

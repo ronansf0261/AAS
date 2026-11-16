@@ -1,0 +1,164 @@
+# Deploy do Projeto Hermes em Docker nesta máquina, sem nada do hub do laboratório.
+# Sobe o broker MQTT, os dois servidores AAS (OPC UA), os dois gateways e os dois simuladores.
+#
+#   cd C:\AAS\servidor-local
+#   docker compose up -d --build
+#
+# Portas no Windows: OPC UA 4886 (CR3) e 4885 (Robô Educacional), MQTT 1883.
+# Antes, pare o que ocupa essas portas: o serviço "mosquitto" do Windows e as janelas do
+# iniciar_teste.ps1 (veja o README, seção "Deploy em Docker").
+#
+# CR3 real em vez do simulador (CR3_REG_STATUS = 0: fim de movimento por tempo fixo, enquanto
+# o programa do controlador não implementa o handshake do registrador 4009):
+#   $env:CR3_MODBUS_HOST = "192.168.5.1"; $env:CR3_MODBUS_PORT = "502"; $env:CR3_REG_STATUS = "0"
+#   docker compose up -d gateway-cr3
+name: hermes
+
+x-python: &python
+  build: .
+  image: hermes-python:local
+  restart: unless-stopped
+  working_dir: /app
+
+services:
+  mosquitto:
+    image: eclipse-mosquitto:2.0.20
+    container_name: hermes-mosquitto
+    restart: unless-stopped
+    ports:
+      - "${MQTT_PORTA:-1883}:1883"
+    volumes:
+      - ./mosquitto.conf:/mosquitto/config/mosquitto.conf:ro
+    healthcheck:
+      test: ["CMD", "mosquitto_pub", "-h", "localhost", "-t", "hermes/health", "-m", "ok"]
+      start_period: 20s
+      start_interval: 2s
+      interval: 60s
+      timeout: 5s
+      retries: 5
+
+  # ---------------------------------------------------------------- Robô A: Dobot CR3
+  aas-cr3:
+    <<: *python
+    container_name: hermes-aas-cr3
+    depends_on:
+      mosquitto:
+        condition: service_healthy
+    ports:
+      - "4886:4886"
+    environment:
+      MQTT_HOST: mosquitto
+      MQTT_PORT: "1883"
+      ASSET_ID: dobot_cr3
+    volumes:
+      - ./:/app/servidor-local:ro
+      - ../integration-layer/resources:/app/resources:ro
+      - ../educational-robot-aas/src:/app/src:ro          # mesma ponte OPC UA <-> MQTT do Robô B
+    command: python -u servidor-local/aas_local.py -f DobotCR3_1.aasx.xml --resources resources --src src --porta 4886
+    healthcheck:                                         # pronto quando a porta OPC UA responde
+      test: ["CMD", "python", "-c", "import socket; socket.create_connection(('localhost', 4886), 2)"]
+      start_period: 60s
+      start_interval: 2s
+      interval: 60s
+      timeout: 5s
+      retries: 3
+
+  sim-cr3:
+    <<: *python
+    container_name: hermes-sim-cr3
+    working_dir: /app/integration-layer
+    ports:
+      - "127.0.0.1:5020:5020"                             # só nesta máquina: injeção de falhas (falha_cr3.py)
+    environment:
+      MODBUS_SIM_HOST: 0.0.0.0
+      MODBUS_SIM_PORT: "5020"
+      SIM_EMULA_STATUS: "1"                               # faz o papel do controlador no handshake do STATUS
+      SIM_MOVE_TIME: "1"
+    volumes:
+      - ../integration-layer/src:/app/integration-layer/src:ro
+    command: python -u src/monitorarModbus.py
+
+  gateway-cr3:
+    <<: *python
+    container_name: hermes-gateway-cr3
+    working_dir: /app/integration-layer
+    depends_on:
+      mosquitto:
+        condition: service_healthy
+      aas-cr3:
+        condition: service_healthy
+      sim-cr3:
+        condition: service_started
+    environment:
+      MQTT_HOST: mosquitto
+      MQTT_PORT: "1883"
+      ASSET_ID: dobot_cr3
+      MODBUS_HOST: ${CR3_MODBUS_HOST:-sim-cr3}
+      MODBUS_PORT: ${CR3_MODBUS_PORT:-5020}
+      AAS_OPCUA_URL: opc.tcp://aas-cr3:4886
+      MOVE_TIME: "1"
+      # Fim de movimento pelo registrador de status (handshake com o controlador). 0 = tempo
+      # fixo (MOVE_TIME), para um controlador que ainda não implementa o handshake.
+      MODBUS_REG_STATUS: ${CR3_REG_STATUS:-4009}
+      MOVE_TIMEOUT: "30"
+    volumes:
+      - ../integration-layer/src:/app/integration-layer/src:ro
+    command: python -u -m src.gateway_mqtt
+
+  # ---------------------------------------------------------------- Robô B: Robô Educacional
+  aas-robo-b:
+    <<: *python
+    container_name: hermes-aas-robo-b
+    depends_on:
+      mosquitto:
+        condition: service_healthy
+    ports:
+      - "4885:4885"
+    environment:
+      MQTT_HOST: mosquitto
+      MQTT_PORT: "1883"
+      ASSET_ID: "0000_0000_0000_0000"
+    volumes:
+      - ./:/app/servidor-local:ro
+      - ../educational-robot-aas/resources:/app/resources:ro
+      - ../educational-robot-aas/src:/app/src:ro
+    command: python -u servidor-local/aas_local.py -f EducationalRobot_V2.aasx.xml --resources resources --src src --porta 4885
+    healthcheck:                                         # pronto quando a porta OPC UA responde
+      test: ["CMD", "python", "-c", "import socket; socket.create_connection(('localhost', 4885), 2)"]
+      start_period: 60s
+      start_interval: 2s
+      interval: 60s
+      timeout: 5s
+      retries: 3
+
+  sim-arduino-b:
+    <<: *python
+    container_name: hermes-sim-arduino-b
+    volumes:
+      - ./:/app/servidor-local:ro
+    command: python -u servidor-local/testes/simulador_arduino.py --host 0.0.0.0 --porta 7777
+
+  gateway-robo-b:
+    # Imagem do próprio gateway da Raspberry Pi (raspberrypi-integration/Dockerfile), sem alteração
+    build: ../raspberrypi-integration
+    image: hermes-gateway-robo-b:local
+    container_name: hermes-gateway-robo-b
+    restart: unless-stopped
+    working_dir: /app
+    depends_on:
+      mosquitto:
+        condition: service_healthy
+      sim-arduino-b:
+        condition: service_started
+    environment:
+      PYTHONUNBUFFERED: "1"
+      PYTHONDONTWRITEBYTECODE: "1"
+      ASSET_ID: "0000_0000_0000_0000"
+      MQTT_BROKER: mosquitto
+      MQTT_PORT: "1883"
+      BAUD_RATE: "1000000"
+      SERIAL_PORT: socket://sim-arduino-b:7777
+    volumes:
+      - ../raspberrypi-integration:/app/raspberrypi-integration:ro
+      - ./testes/gateway_robo_b.py:/app/servidor-local/testes/gateway_robo_b.py:ro
+    command: python -u /app/servidor-local/testes/gateway_robo_b.py

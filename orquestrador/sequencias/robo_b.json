@@ -1,0 +1,13 @@
+{
+  "nome": "Sequência de referência — Robô Educacional",
+  "aas_url": "opc.tcp://127.0.0.1:4885",
+  "referencial": "robô (provisório: a conversão para o referencial da célula é a Fase 4.2)",
+  "ciclos": 20,
+  "timeout_ciclo_s": 120,
+  "meta_sucesso": 0.95,
+  "garra": {"abertura": 180, "fechamento": 45},
+  "passos": [
+    {"pick": [140, 120, -62], "place": [-140, 120, -62]},
+    {"pick": [-140, 120, -62], "place": [140, 120, -62]}
+  ]
+}

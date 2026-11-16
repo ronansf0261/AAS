@@ -1,0 +1,43 @@
+# AAS do Dobot CR3 (Robô A) — mesma imagem e mesma camada de integração do Robô Educacional.
+# Pré-requisito: este diretório ao lado de ../educational-robot-aas (reaproveita o src dele).
+networks:
+  aas_default:
+    external: true
+
+services:
+  aas_cr3:
+    image: aas_core_v1.1.2
+    container_name: DobotCR3AAS
+    volumes:
+      - ./resources:/app/resources
+      - ../educational-robot-aas/src:/app/src   # mesma camada de integração: só o ASSET_ID muda
+      - ./mongo:/var/lib/mongodb
+    working_dir: /app
+    ports:
+      - "4886:4840"                             # o Robô Educacional usa a 4885
+    restart: always
+    logging:
+      driver: gelf
+      options:
+        gelf-address: "udp://localhost:12201"
+    runtime: runc
+    environment:
+      - MQTT_HOST=${MQTT_HOST}
+      - MQTT_PORT=${MQTT_PORT}
+      - ASSET_ID=${ASSET_ID}
+    command: >
+      -f DobotCR3AAS.aasx.xml
+      --identification ${AAS_IDENTIFICATION}
+      --id https://hub-internal.local/ids/aas/DobotCR3AAS
+      --id_short DobotCR3AAS
+      --build_date 2026-11-03T00:00:00
+      --host_discovery ${HOST_DISCOVERY}
+      --host_discovery_service ${HOST_DISCOVERY}
+      --port_discovery_service 4840
+      --database_host ${DATABASE_HOST}
+      --database_port ${DATABASE_PORT}
+      --database_user ${DATABASE_USER}
+      --database_pass ${DATABASE_PASS}
+      --production
+    networks:
+      - aas_default

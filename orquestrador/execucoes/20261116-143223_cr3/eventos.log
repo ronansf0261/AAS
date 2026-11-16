@@ -1,0 +1,18 @@
+2026-11-16 14:32:23,782 INFO Sequência 'Sequência de referência — Dobot CR3': 2 ciclo(s), 2 passo(s), timeout 60 s por ciclo
+2026-11-16 14:32:23,783 INFO AAS DobotCR3 em opc.tcp://127.0.0.1:4886
+2026-11-16 14:32:23,784 INFO Estado inicial na AAS: Idle
+2026-11-16 14:32:23,838 DEBUG Ciclo 1/2: pick [200, 150, 100] -> place [-200, 150, 100]
+2026-11-16 14:32:23,883 DEBUG     estado: Start                              (+0.05 s)
+2026-11-16 14:32:24,133 DEBUG     estado: Executing                          (+0.30 s)
+2026-11-16 14:32:25,483 DEBUG     estado: Error: Robot Alarm                 (+1.64 s)
+2026-11-16 14:32:25,483 INFO Ciclo  1/2 · pick (200, 150, 100) -> place (-200, 150, 100) · Start -> Executing -> Error: Robot Alarm ·  1.64 s · ERRO
+2026-11-16 14:32:25,483 INFO Calibrate: levando o robô à home...
+2026-11-16 14:32:25,532 DEBUG     estado: Calibrate                          (+0.00 s)
+2026-11-16 14:32:25,633 DEBUG     estado: Executing                          (+0.11 s)
+2026-11-16 14:32:26,733 DEBUG     estado: Idle                               (+1.20 s)
+2026-11-16 14:32:26,733 INFO Calibrate -> Idle
+2026-11-16 14:32:26,783 DEBUG Ciclo 2/2: pick [-200, 150, 100] -> place [200, 150, 100]
+2026-11-16 14:32:26,832 DEBUG     estado: Start                              (+0.05 s)
+2026-11-16 14:32:27,132 DEBUG     estado: Executing                          (+0.34 s)
+2026-11-16 14:32:30,482 DEBUG     estado: Idle                               (+3.69 s)
+2026-11-16 14:32:30,482 INFO Ciclo  2/2 · pick (-200, 150, 100) -> place (200, 150, 100) · Start -> Executing -> Idle ·  3.69 s · OK
